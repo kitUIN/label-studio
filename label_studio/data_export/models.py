@@ -8,6 +8,8 @@ from copy import deepcopy
 from datetime import datetime
 
 import ujson as json
+
+from ai_center.converter import AiCenterConverter
 from core import version
 from core.feature_flags import flag_set
 from core.utils.common import load_func
@@ -17,7 +19,7 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils.translation import gettext_lazy as _
-from label_studio_sdk.converter import Converter
+from ai_center.converter import AiCenterConverter as Converter
 from tasks.models import Annotation
 
 logger = logging.getLogger(__name__)
@@ -130,7 +132,7 @@ class DataExport(object):
 
     @staticmethod
     def get_export_formats(project):
-        converter = Converter(config=project.get_parsed_config(), project_dir=None)
+        converter = AiCenterConverter(config=project.get_parsed_config(), project_dir=None)
         formats = []
         supported_formats = set(converter.supported_formats)
         for format, format_info in converter.all_formats().items():
