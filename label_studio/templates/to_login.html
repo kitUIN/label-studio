@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>跳转中</title>
+    <style>
+        /* 隐藏表单 */
+        #loginForm {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<form id="loginForm" action="{{ url }}" method="POST">
+    <input type="hidden" name="email" value="kulujun@gamil.com">
+    <input type="hidden" name="password" value="bala1234">
+    <button type="submit">跳转</button>
+</form>
+
+<script>
+    document.getElementById('loginForm').submit();
+</script>
+</body>
+</html>

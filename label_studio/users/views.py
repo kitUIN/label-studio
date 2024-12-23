@@ -92,12 +92,11 @@ def user_signup(request):
     )
 
 
-@enforce_csrf_checks
+# @enforce_csrf_checks
 def user_login(request):
     """Login page"""
     user = request.user
     next_page = request.GET.get('next')
-
     # checks if the URL is a safe redirection.
     if not next_page or not url_has_allowed_host_and_scheme(url=next_page, allowed_hosts=request.get_host()):
         next_page = reverse('projects:project-index')

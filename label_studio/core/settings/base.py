@@ -161,7 +161,7 @@ DATABASES_ALL = {
     DJANGO_DB_MYSQL: {
         'ENGINE': 'django.db.backends.mysql',
         'USER': get_env('MYSQL_USER', 'root'),
-        'PASSWORD': get_env('MYSQL_PASSWORD', ''),
+        'PASSWORD': get_env('MYSQL_PASSWORD', 'bala1234/'),
         'NAME': get_env('MYSQL_NAME', 'labelstudio'),
         'HOST': get_env('MYSQL_HOST', 'localhost'),
         'PORT': int(get_env('MYSQL_PORT', '3306')),
@@ -229,6 +229,7 @@ INSTALLED_APPS = [
     'labels_manager',
     'ml_models',
     'ml_model_providers',
+    'ai_center',
 ]
 
 MIDDLEWARE = [
@@ -365,10 +366,10 @@ SWAGGER_SETTINGS = {
             'name': 'Authorization',
             'in': 'header',
             'description': 'The token (or API key) must be passed as a request header. '
-            'You can find your user token on the User Account page in Label Studio. Example: '
-            '<br><pre><code class="language-bash">'
-            'curl https://label-studio-host/api/projects -H "Authorization: Token [your-token]"'
-            '</code></pre>',
+                           'You can find your user token on the User Account page in Label Studio. Example: '
+                           '<br><pre><code class="language-bash">'
+                           'curl https://label-studio-host/api/projects -H "Authorization: Token [your-token]"'
+                           '</code></pre>',
         }
     },
     'APIS_SORTER': 'alpha',
@@ -783,3 +784,8 @@ if CI:
         'ignore_name': '0002_auto_20210304_1457',
         'sql-analyser': 'postgresql',
     }
+SESSION_COOKIE_AGE = 86400
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+]
